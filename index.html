@@ -53,7 +53,8 @@
 	<script>
 		const urlParams = new URLSearchParams(window.location.search)
 		if(urlParams.get("app")){
-			document.getElementById("snap").src = urlParams.get("app")
+			document.getElementById("snap").src = urlParams.get("app");
+			document.getElementById("iframe-src").value = urlParams.get("app");
 		}
 		update = function(){
 			document.getElementById("snap").src = document.getElementById('iframe-src').value;
