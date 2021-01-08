@@ -60,13 +60,11 @@
 		</div>
 	</div>
 	<script>
-		const urlParams = new URLSearchParams(window.location.search);
-		if(urlParams.get("app")){
-			document.getElementById("snap").src = urlParams.get("app");
-			document.getElementById("iframe-src").value = urlParams.get("app");
-		}
-		update = function () {
-			var url = document.getElementById('iframe-src').value;
+		update = function (url = null) {
+			if (url === null){
+				var url = document.getElementById('iframe-src').value;
+				console.log("Empty parameter.")
+			}
 			if (!url.startsWith("http://") && !url.startsWith("https://") && url !== "") {
 				url = "https://" + url;
 			}
@@ -75,6 +73,12 @@
 			}
 			document.getElementById("snap").src = url;
 		}
+		const urlParams = new URLSearchParams(window.location.search);
+		if(urlParams.get("app")){
+			update(urlParams.get("app"));
+			document.getElementById("iframe-src").value = urlParams.get("app");
+		}
+		
 		var i = document.getElementById("iframe-src");
 		i.addEventListener('keyup', update);
 	</script>
