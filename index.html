@@ -71,6 +71,7 @@
 			if (url === "") {
 				url = "/hero.html";
 			}
+			window.history.replaceState(null, "", `?app=${url}`)
 			document.getElementById("snap").src = url;
 		}
 		const urlParams = new URLSearchParams(window.location.search);
